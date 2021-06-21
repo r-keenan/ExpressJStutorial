@@ -11,6 +11,31 @@ app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "/templates/about.html"));
 });
 
+app.get("/ajax", (req, res) => {
+  res.sendFile(path.join(__dirname, "/templates/ajax.html"));
+});
+
+app.get("/api/movies", (req, res) => {
+  const movies = [
+    {
+      title: "Dune",
+    },
+    {
+      title: "Scanners",
+    },
+    {
+      title: "Westworld",
+    },
+    {
+      title: "The Matrix",
+    },
+    {
+      title: "Robocop",
+    },
+  ];
+  res.json(movies);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
