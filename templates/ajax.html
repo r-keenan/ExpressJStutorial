@@ -8,11 +8,22 @@
   </head>
   <body>
     <h1>AJAX Example</h1>
+    <dv id="root"></dv>
     <script>
       fetch("/api/movies")
         .then((response) => response.json())
         .then((data) => {
-            
+          let myRoot = document.querySelector("#root");
+          let myMovies = document.createElement("div");
+
+          for (let x = 0; x < data.length; x++) {
+            let p = document.createElement("p");
+
+            p.innerText = data[x].title;
+            myMovies.appendChild(p);
+          }
+
+          myRoot.appendChild(myMovies);
         });
     </script>
   </body>
